@@ -5,8 +5,8 @@ import numpy as np
 
 data = pd.read_csv('data/data_poly_reg/group5_train.txt', header=None, delim_whitespace = True, dtype = np.float32)  #instead of delim, we use sep=' '
 test_data = pd.read_csv('data/data_poly_reg/group5_test.txt', header=None, delim_whitespace = True, dtype = np.float32)
-#plt.plot(data[0], data[1], 'ro')
-#plt.show()
+plt.plot(data[0], data[1], 'ro')
+plt.show()
 
 n_observations = 1500
 
@@ -40,9 +40,9 @@ with tf.Session() as sess:
         prev_training_cost = training_cost
 
     print("Predicted Values")
-    plt.plot(test_data[0], test_data[1], 'ro')
-    plt.show()
-    plt.plot(test_data[0], sess.run(Y_pred, feed_dict={X: test_data[0]}), 'ro')
+    #plt.plot(test_data[0], test_data[1], 'ro')
+    #plt.show()
+    plt.plot(data[0], sess.run(Y_pred, feed_dict={X: data[0]}), 'ro')
     plt.show()
     #print(np.abs(sess.run(Y_pred, feed_dict={X: test_data[0]}) - test_data[1]))
 
